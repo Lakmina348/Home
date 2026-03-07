@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... | Lakmina</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        body {
+            background-color: #050a18;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .loader-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* වටේ කැරකෙන සජීවී වළල්ල */
+        .loader-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top: 3px solid #00d2ff;
+            border-bottom: 3px solid #3a7bd5;
+            animation: spin 2s linear infinite;
+        }
+
+        /* "L" අකුර සඳහා Neon විලාසිතාව */
+        .logo-l {
+            font-size: 110px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #00d2ff,
+                0 0 82px #00d2ff,
+                0 0 92px #00d2ff;
+            animation: pulsate 1.5s infinite alternate;
+            user-select: none;
+        }
+
+        .percentage {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #00d2ff;
+            letter-spacing: 2px;
+        }
+
+        /* Buttons Container */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp:hover { box-shadow: 0 0 30px rgba(37, 211, 102, 0.7); transform: translateY(-3px); }
+
+        /* Telegram Button */
+        .telegram {
+            background: linear-gradient(45deg, #0088cc, #005580);
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+        }
+        .telegram:hover { box-shadow: 0 0 30px rgba(0, 136, 204, 0.7); transform: translateY(-3px); }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulsate {
+            100% {
+                text-shadow:
+                0 0 4px #fff,
+                0 0 11px #fff,
+                0 0 19px #fff,
+                0 0 40px #00d2ff,
+                0 0 80px #00d2ff,
+                0 0 90px #00d2ff;
+            }
+            0% {
+                text-shadow:
+                0 0 2px #fff,
+                0 0 4px #fff,
+                0 0 6px #fff,
+                0 0 10px #00d2ff,
+                0 0 45px #00d2ff,
+                0 0 55px #00d2ff;
+            }
+        }
+
+        .fade-out { animation: fadeOut 1s forwards; }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+    </style>
+</head>
+<body>
+
+    <div class="loader-container">
+        <div class="loader-ring"></div>
+        <div class="logo-l">L</div>
+    </div>
+
+    <div class="percentage" id="count">0%</div>
+
+    <div class="btn-group">
+        <a href="https://wa.me/94788637885" class="btn whatsapp">WhatsApp</a>
+        <a href="https://t.me/94788637885" class="btn telegram">Telegram</a>
+    </div>
+
+    <script>
+        // --- මෙතැනට ඔබට යා යුතු පිටුවේ ලිපිනය ඇතුළත් කරන්න ---
+        const targetUrl = "HOME.html"; 
+        
+        const countElement = document.getElementById('count');
+        
+        let count = 0;
+        const countInterval = setInterval(() => {
+            count++;
+            countElement.innerText = count + "%";
+            if (count >= 100) clearInterval(countInterval);
+        }, 80); 
+
+        // තත්පර 9 කට පසු (Fade out වී තත්පර 1 කින් පසු) අලුත් පිටුවට යොමු වේ
+        setTimeout(() => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 1000);
+        }, 9000);
+    </script>
+
+</body>
+
+</html
