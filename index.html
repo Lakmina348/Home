@@ -36,15 +36,21 @@
             border: 3px solid transparent;
             border-top: 3px solid #00d2ff;
             border-bottom: 3px solid #3a7bd5;
-            animation: spin 0.5s linear infinite; /* ඉතා වේගයෙන් කැරකේ */
+            animation: spin 1s linear infinite; /* කැරකෙන වේගයත් පොඩ්ඩක් වැඩි කළා */
         }
 
         .logo-l {
             font-size: 110px;
             font-weight: 900;
             color: #fff;
-            text-shadow: 0 0 10px #fff, 0 0 40px #00d2ff;
-            animation: pulsate 0.5s infinite alternate;
+            text-shadow: 
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #00d2ff,
+                0 0 82px #00d2ff,
+                0 0 92px #00d2ff;
+            animation: pulsate 1s infinite alternate;
             user-select: none;
         }
 
@@ -56,7 +62,10 @@
             letter-spacing: 2px;
         }
 
-        .btn-group { display: flex; gap: 20px; }
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
 
         .btn {
             padding: 15px 30px;
@@ -65,17 +74,36 @@
             font-weight: 600;
             font-size: 15px;
             color: white;
+            transition: 0.4s;
+            display: flex;
+            align-items: center;
             text-transform: uppercase;
         }
 
-        .whatsapp { background: linear-gradient(45deg, #25d366, #128c7e); }
-        .telegram { background: linear-gradient(45deg, #0088cc, #005580); }
+        .whatsapp {
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp:hover { box-shadow: 0 0 30px rgba(37, 211, 102, 0.7); transform: translateY(-3px); }
 
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes pulsate { 100% { text-shadow: 0 0 20px #00d2ff; } 0% { text-shadow: 0 0 5px #fff; } }
+        .telegram {
+            background: linear-gradient(45deg, #0088cc, #005580);
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.4);
+        }
+        .telegram:hover { box-shadow: 0 0 30px rgba(0, 136, 204, 0.7); transform: translateY(-3px); }
 
-        .fade-out { animation: fadeOut 0.3s forwards; }
-        @keyframes fadeOut { to { opacity: 0; } }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulsate {
+            100% { text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 40px #00d2ff; }
+            0% { text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 10px #00d2ff; }
+        }
+
+        .fade-out { animation: fadeOut 0.5s forwards; }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
     </style>
 </head>
 <body>
@@ -97,21 +125,20 @@
         const countElement = document.getElementById('count');
         
         let count = 0;
-        // ඉතා වේගයෙන් ඉලක්කම් වැඩි වේ (තත්පරයකට අඩු කාලයකින් 100% වේ)
+        // මිලි තත්පර 20 බැගින් වැඩි වන විට තත්පර 2 කින් (2000ms) 100% වේ
         const countInterval = setInterval(() => {
-            count += 2; // වේගය වැඩි කිරීමට 2 බැගින් එකතු වේ
-            if (count > 100) count = 100;
+            count++;
             countElement.innerText = count + "%";
             if (count >= 100) clearInterval(countInterval);
-        }, 8); 
+        }, 20); 
 
-        // මිලි තත්පර 800 කින් (තත්පර 0.8) පිටුව මාරු වේ
+        // තත්පර 2 කට පසු පිටුව මාරු වේ
         setTimeout(() => {
             document.body.classList.add('fade-out');
             setTimeout(() => {
                 window.location.href = targetUrl;
-            }, 200); 
-        }, 800);
+            }, 500); // fade out එකට තත්පර 0.5ක් ලබා දී ඇත
+        }, 2000);
     </script>
 
 </body>
