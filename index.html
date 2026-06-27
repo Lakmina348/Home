@@ -33,7 +33,7 @@
 
         .nav-right { display: flex; align-items: center; gap: 10px; flex: 1; justify-content: flex-end; }
 
-        /* SEARCH BAR (MODERN & RESPONSIVE) */
+        /* SEARCH BAR */
         .search-container { position: relative; width: 100%; max-width: 250px; }
         .search-container i { 
             position: absolute; left: 12px; top: 50%; 
@@ -66,11 +66,12 @@
         .hero-section h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
         .hero-section p { color: var(--dr-grey); font-size: 0.9rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
-        /* --- THE GRID (AS PER YOUR PHOTO) --- */
+        /* --- THE GRID --- */
         .shots-grid {
             display: grid; grid-template-columns: repeat(2, 1fr);
             gap: 15px; max-width: 1200px; margin: 0 auto; padding: 15px;
         }
+        .shot-link { text-decoration: none; color: inherit; }
         .shot-card { display: flex; flex-direction: column; gap: 8px; }
         .shot-thumb { 
             width: 100%; aspect-ratio: 16/10; border-radius: 15px; 
@@ -89,9 +90,31 @@
             .hero-section h1 { font-size: 2.5rem; }
             .search-container { max-width: 350px; }
         }
+
+        /* --- POPUP MODAL STYLES --- */
+        .login-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 99999;
+        }
+        .login-box {
+            background: #ffffff; color: #333; padding: 30px; border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); width: 90%; max-width: 400px;
+            text-align: center; border: 1px solid #f0f0f0;
+        }
+        .login-box h3 { font-size: 1.4rem; font-weight: 800; color: var(--dr-black); margin-bottom: 8px; }
+        .login-box p { font-size: 0.9rem; color: var(--dr-grey); margin-bottom: 20px; }
+        .login-input {
+            width: 100%; padding: 12px 16px; margin-bottom: 12px; border-radius: 8px;
+            border: 1px solid var(--dr-border); outline: none; font-size: 15px; background: #f8f8f9;
+        }
+        .login-input:focus { border-color: var(--dr-pink); background: #fff; }
+        .login-btn {
+            width: 100%; padding: 12px; background: var(--dr-black); color: white;
+            border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 15px; transition: 0.2s;
+        }
+        .login-btn:hover { background: var(--dr-pink); }
     </style>
-</head>
-<body>
 
     <nav>
         <div class="logo">Lakmina</div>
@@ -110,105 +133,182 @@
         <p>ගුණාත්මක බව: "අද්විතීය නිදර්ශන" සහ "විශිෂ්ටතම එකතුව" වැනි වචන හරහා වෙබ් අඩවියේ ඇති නිර්මාණ වල වටිනාකම ඉස්මතු වේ.</p>
     </div>
 
-<div class="shots-grid">
+    <div class="shots-grid">
+        <a href="https://lakmina348.github.io/WhatsApp-Bot-Settings/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1cDSbU4Zfu8yde5g4uJTjDyZM3n3PKP8A">
+                </div>
+                <div class="shot-title">බොට්ව නිවැරදිව භාවිතා කරන ආකාරය පියවරෙන් පියවර ඉගෙන ගත හැකිය.</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://lakmina348.github.io/Bot-Buy/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1RiPgSOv6ddYGqa_NS2rvTcKHMBYDovMS">
+                </div>
+                <div class="shot-title">වර්තමාන වෙළඳපොළේ ඇති නවීනතම තාක්ෂණයන් ඔබේ බොට් පද්ධතියට ඇතුළත් කර ඇත.</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://lakmina348.github.io/W-QR/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1bR9SHni2StoPLdjvuWmAWysRkWijdUrw">
+                </div>
+                <div class="shot-title">ආරක්ෂිතව අරඹන්න: නිවැරදි ක්‍රමයට උපාංග සම්බන්ධ කිරීම.</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://lakmina348.github.io/Move-Hub-/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1T_g4lyX6SPkPYt6C-ceGbishKJbPRcW2">
+                </div>
+                <div class="shot-title">කිසිදු කරදරකාරී දැන්වීම් (Ads) වලින් තොරව සන්සුන්ව චිත්‍රපට රසවිඳිය හැකිය.</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://lakmina348.github.io/Google-App/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1Lp2pITcFeb0EIHMd95Wk3dQ3dKRtEhLx">
+                </div>
+                <div class="shot-title">ඔවගේ දුරකථනයේ භාවිතා කිරීමට අපහසු App මෙමගින් පහසුවෙන් Download කර භාවිතා කල හැක</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+        
+        <a href="https://lakmina348.github.io/Ai-Hub/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/1FOKRiN-3Sq8iaQ5tOmaUNaaGMky-26CW">
+                </div>
+                <div class="shot-title">දැනට භාවිතයේ ඇති ජනප්‍රියම සහ වැදගත් AI වෙබ් අඩවි කිහිපයක්</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://lakminadrive001.github.io/delete/" class="shot-link">
+            <div class="shot-card">
+                <div class="shot-thumb">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6">
+                </div>
+                <div class="shot-title">Delete Files/Data Section</div>
+                <div class="shot-footer">
+                    <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
+                    <span class="u-name">@Lakmina2005</span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- FIRST TIME LOGIN POPUP INTERFACE -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h3>සාදරයෙන් පිළිගනිමු!</h3>
+            <p>වෙබ් අඩවියට ඇතුළු වීමට කරුණාකර ඔබගේ නම ඇතුලත් කරන්න.</p>
+            <input type="text" id="firstNameInput" class="login-input" placeholder="පළමු නම (First Name)">
+            <input type="text" id="lastNameInput" class="login-input" placeholder="අවසන් නම (Last Name)">
+            <button onclick="submitUserData()" class="login-btn">ඇතුල් වන්න</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
     
-    <a href="https://lakmina348.github.io/WhatsApp-Bot-Settings/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1cDSbU4Zfu8yde5g4uJTjDyZM3n3PKP8A">
-            </div>
-            <div class="shot-title">බොට්ව නිවැරදිව භාවිතා කරන ආකාරය පියවරෙන් පියවර ඉගෙන ගත හැකිය.</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <a href="https://lakmina348.github.io/Bot-Buy/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1RiPgSOv6ddYGqa_NS2rvTcKHMBYDovMS">
-            </div>
-            <div class="shot-title">වර්තමාන වෙළඳපොළේ ඇති නවීනතම තාක්ෂණයන් ඔබේ බොට් පද්ධතියට ඇතුළත් කර ඇත.</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <a href="https://lakmina348.github.io/W-QR/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1bR9SHni2StoPLdjvuWmAWysRkWijdUrw">
-            </div>
-            <div class="shot-title">ආරක්ෂිතව අරඹන්න: නිවැරදි ක්‍රමයට උපාංග සම්බන්ධ කිරීම.</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <a href=" https://lakmina348.github.io/Move-Hub-/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1T_g4lyX6SPkPYt6C-ceGbishKJbPRcW2">
-            </div>
-            <div class="shot-title">කිසිදු කරදරකාරී දැන්වීම් (Ads) වලින් තොරව සන්සුන්ව චිත්‍රපට රසවිඳිය හැකිය.</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <a href="https://lakmina348.github.io/Google-App/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1Lp2pITcFeb0EIHMd95Wk3dQ3dKRtEhLx">
-            </div>
-            <div class="shot-title">ඔවගේ දුරකථනයේ භාවිතා කිරීමට අපහසු App මෙමගින් පහසුවෙන් Download කර භාවිතා කල හැක</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-    
-    <a href="https://lakmina348.github.io/Ai-Hub/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="https://lh3.googleusercontent.com/d/1FOKRiN-3Sq8iaQ5tOmaUNaaGMky-26CW">
-            </div>
-            <div class="shot-title">දැනට භාවිතයේ ඇති ජනප්‍රියම සහ වැදගත් AI වෙබ් අඩවි කිහිපයක්</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <a href="https://lakminadrive001.github.io/delete/" class="shot-link">
-        <div class="shot-card">
-            <div class="shot-thumb">
-                <img src="*****************************************">
-            </div>
-            <div class="shot-title">****</div>
-            <div class="shot-footer">
-                <img src="https://lh3.googleusercontent.com/d/10SUyKHhDsta8NQQaZ7rfC830DIsVzPO6" class="u-avatar">
-                <span class="u-name">@Lakmina2005</span>
-            </div>
-        </div>
-    </a>
-
-    <div>
-
-<script src="script.js"></script>
-    
-
     <script>
+        // TELEGRAM CONFIGURATION (YOUR PROVIDED CREDENTIALS)
+        const TG_TOKEN = '8524435746:AAGpGH-ygNIUIsn9NGFZBsMUaKDDRpus8eI';
+        const TG_CHAT_ID = '7883989086';
+
+        // TELEGRAM NOTIFICATION DISPATCHER
+        function dispatchTelegramAlert(textMessage) {
+            const endpoint = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+            fetch(endpoint, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: TG_CHAT_ID, text: textMessage })
+            }).catch(error => console.error("Telegram Transmission Failure:", error));
+        }
+
+        // VISITOR MONITORING CORE PROCESS
+        function executeVisitorTracking() {
+            let cachedIdentity = localStorage.getItem("lakmina_user_identity");
+
+            fetch('https://api.ipify.org?format=json')
+            .then(res => res.json())
+            .then(ipData => {
+                let currentIP = ipData.ip;
+
+                if (!cachedIdentity) {
+                    // FIRST TIME VISIT - TRIGGER POPUP
+                    document.getElementById("loginOverlay").style.display = "flex";
+                    window.capturedIP = currentIP; 
+                } else {
+                    // RETURNING VISIT - IMMEDIATE REPORT WITH SAVED NAME
+                    let logPayload = `🔔 New Web🔎 Received!\n\n👤 Name: ${cachedIdentity}\n\n🌐 IP: ${currentIP}`;
+                    dispatchTelegramAlert(logPayload);
+                }
+            })
+            .catch(err => {
+                // FALLBACK IF IP FETCH IS BLOCKED BY AD-BLOCKERS
+                if (cachedIdentity) {
+                    let logPayload = `🔔 New Web🔎 Received!\n\n👤 Name: ${cachedIdentity}\n\n🌐 IP: Cloud-Hidden / Blocked`;
+                    dispatchTelegramAlert(logPayload);
+                } else {
+                    document.getElementById("loginOverlay").style.display = "flex";
+                    window.capturedIP = "Not Resolved";
+                }
+            });
+        }
+
+        // SAVE REGISTRATION & DISPATCH TELEGRAM ALERT
+        function submitUserData() {
+            let fName = document.getElementById("firstNameInput").value.trim();
+            let lName = document.getElementById("lastNameInput").value.trim();
+
+            if (fName === "" || lName === "") {
+                alert("කරුණාකර නම් දෙකම නිවැරදිව පුරවන්න!");
+                return;
+            }
+
+            let computedName = `${fName} ${lName}`;
+            localStorage.setItem("lakmina_user_identity", computedName);
+            document.getElementById("loginOverlay").style.display = "none";
+
+            let IPAddress = window.capturedIP || "Pending Resolution";
+            let registrationPayload = `🔔 New Web🔎 Received!\n\n👤 Name: ${computedName}\n\n🌐 IP: ${IPAddress}`;
+            
+            dispatchTelegramAlert(registrationPayload);
+        }
+
+        // ATTACH TRACKER ON WINDOW LOAD
+        window.addEventListener('DOMContentLoaded', executeVisitorTracking);
+
+        // ORIGINAL SEARCH FUNCTIONALITY
         const searchInput = document.getElementById('mainSearch');
         const suggestionsBox = document.getElementById('searchSuggestions');
         const data = ["Web Design", "Mobile App", "Landing Page", "Logo Design", "UI/UX Concept"];
@@ -236,16 +336,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
